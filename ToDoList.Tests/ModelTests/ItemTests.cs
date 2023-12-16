@@ -111,7 +111,5 @@ namespace ToDoList.Tests
     Assert.AreEqual(newItem2, result);
   }
 
-
-
   }
 }
