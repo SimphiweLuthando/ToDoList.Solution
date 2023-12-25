@@ -28,14 +28,21 @@
     Layout = "_Layout";
 }
 
-<h1>Add a category</h1>
-<p>Add a category here:</p>
-
-<form action="/categories" method="post">
-  <label for="categoryName">Category name</label>
-  <input id="categoryName" name="categoryName" type="text">
-  <button type="submit">Add</button>
-</form>
-
-<p><a href="/">Back home</a></p>
-<p><a href="/categories">Back to categories.</a></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-3 col-md-6">
+      <div class="mt-5">
+        <h1 class="text-center">Add a category</h1>
+        <form action="/categories" method="post" class="form">
+          <div class="form-group mb-3">
+            <label for="categoryName">Category name</label>
+            <input id="categoryName" name="categoryName" type="text" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        <p class="text-center mt-3"><a href="/">Back home</a></p>
+        <p class="text-center"><a href="/categories">Back to categories.</a></p>
+      </div>
+    </div>
+  </div>
+</div>
