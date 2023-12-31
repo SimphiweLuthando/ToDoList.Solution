@@ -12,3 +12,11 @@ div#footer {
     height: 40px;
     width: 40px; 
 }
+
+.container-index {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }

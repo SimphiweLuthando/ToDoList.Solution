@@ -4,13 +4,19 @@
 
 @using ToDoList.Models;
 
-<h1>Items</h1>
+<h1 class="text-center">Items</h1>
 
-<ul>
-  @foreach(Item item in Model)
-  {
-    <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId })</li>
-  }
-</ul>
+<div class="card col-md-6 mx-auto">
+  <div class="card-body">
+    <ul class="list-group">
+      @foreach(Item item in Model)
+      {
+        <li class="list-group-item">
+          @Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId }, new { @class = "link-underline-secondary text-secondary" })
+        </li>
+      }
+    </ul>
 
-<p>@Html.ActionLink("Add new item", "Create")</p>
+    <p>@Html.ActionLink("Add new item", "Create", new { @class = "btn btn-primary" })</p>
+  </div>
+</div>
