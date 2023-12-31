@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using MySqlConnector;
 
 namespace ToDoList.Models
 {
@@ -7,5 +5,7 @@ namespace ToDoList.Models
     {
         public string Description { get; set; }
         public int ItemId { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

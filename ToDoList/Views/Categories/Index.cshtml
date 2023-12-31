@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@using ToDoList.Models;
+
+<h1 class="text-center">Categories</h1>
+
+<div class="card col-md-6 mx-auto">
+  <div class="card-body">
+    <ul class="list-group">
+      @foreach(Category category in Model)
+      {
+        <li class="list-group-item">
+          @Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId }, new { @class = "link-underline-secondary text-secondary" })
+        </li>
+      }
+    </ul>
+
+    <p>@Html.ActionLink("Add new category", "Create", new { @class = "btn btn-primary" })</p>
+    <p>@Html.ActionLink("Home", "Index", "Home")</p>
+  </div>
+</div>
