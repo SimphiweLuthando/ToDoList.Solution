@@ -4,9 +4,12 @@
 
 @model ToDoList.Models.Item
 
-<h2>Item Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)<h3>
-<p>@Html.ActionLink("Edit Item", "Edit", new { id = Model.ItemId })</p>
-<p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId })</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<div class="container mt-5">
+  <h2 class="mb-3">Item Details</h2>
+  <hr />
+  <h3 class="mb-3">@Html.DisplayNameFor(model => model.Description): <span class="text-primary">@Html.DisplayFor(model => model.Description)</span></h3>
+
+  <p>@Html.ActionLink("Edit Item", "Edit", new { id = Model.ItemId }, new { @class = "btn btn-primary" })</p>
+  <p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId }, new { @class = "btn btn-danger" })</p>
+  <p>@Html.ActionLink("Back to list", "Index", null, new { @class = "btn btn-secondary" })</p>
+</div>

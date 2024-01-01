@@ -4,11 +4,23 @@
 
 @model ToDoList.Models.Item
 
-<h4>Add a new item</h4>
-@using (Html.BeginForm())
-{
-  @Html.LabelFor(model => model.Description)
-  @Html.TextBoxFor(model => model.Description)
-  <input type="submit" value="Add new item" />
-}
-<p>@Html.ActionLink("Show all items", "Index")</p>
+<div class="container mt-5 col-sm-4">
+  <h4 class="mb-3">Add a new item</h4>
+
+  @using (Html.BeginForm())
+  {
+    <div class="mb-3">
+      @Html.LabelFor(model => model.Description, new { @class = "form-label" })
+      @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+    </div>
+
+    <div class="mb-3">
+      @Html.LabelFor(model => model.Category, new { @class = "form-label" })
+      @Html.DropDownList("CategoryId", null, new { @class = "form-select" })
+    </div>
+
+    <input type="submit" value="Add new item" class="btn btn-primary mb-3" />
+  }
+
+  <p><a href="@Url.Action("Index")" class="btn btn-secondary">Show all items</a></p>
+</div>
