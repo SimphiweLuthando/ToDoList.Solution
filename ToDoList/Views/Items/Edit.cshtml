@@ -4,17 +4,26 @@
 
 @model ToDoList.Models.Item
 
-<h2>Edit</h2>
+<div class="container mt-5">
+  <h2 class="mb-3">Edit</h2>
+  <h4 class="mb-3">Edit this item: <span class="text-primary">@Html.DisplayFor(model => model.Description)</span></h4>
 
-<h4>Edit this item: @Html.DisplayFor(model => model.Description)</h4>
-
-@using (Html.BeginForm())
-{
+  @using (Html.BeginForm())
+  {
     @Html.HiddenFor(model => model.ItemId)
 
-    @Html.LabelFor(model => model.Description)
-    @Html.EditorFor(model => model.Description)
+    <div class="mb-3">
+      @Html.LabelFor(model => model.Description, new { @class = "form-label" })
+      @Html.EditorFor(model => model.Description, new { @class = "form-control" })
+    </div>
 
-    <input type="submit" value="Save" />
-}
-<p>@Html.ActionLink("Back to list", "Index")</p>
+    <div class="mb-3">
+      @Html.LabelFor(model => model.Category, new { @class = "form-label" })
+      @Html.DropDownList("CategoryId", null, new { @class = "form-select" })
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-primary mb-3" />
+  }
+
+  <p><a href="@Url.Action("Index")" class="btn btn-secondary">Back to list</a></p>
+</div>

@@ -7,6 +7,11 @@
 <div class="container mt-5 col-sm-4">
   <h4 class="mb-3">Add a new item</h4>
 
+  <div class="alert alert-warning">
+    <strong>NOTE:</strong> You need to have at least one category before you can add an item!
+  </div>
+  <p>Go to @Html.ActionLink("this page", "Create", "Categories") to create a category.</p>
+
   @using (Html.BeginForm())
   {
     <div class="mb-3">

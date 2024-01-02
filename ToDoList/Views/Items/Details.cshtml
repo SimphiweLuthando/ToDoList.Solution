@@ -7,9 +7,10 @@
 <div class="container mt-5">
   <h2 class="mb-3">Item Details</h2>
   <hr />
-  <h3 class="mb-3">@Html.DisplayNameFor(model => model.Description): <span class="text-primary">@Html.DisplayFor(model => model.Description)</span></h3>
+  <h3>@Html.DisplayNameFor(model => model.Description): <span class="text-primary">@Html.DisplayFor(model => model.Description)</span></h3>
+  <h3>@Html.DisplayNameFor(model => model.Category): <span class="text-primary">@Html.DisplayFor(model => model.Category.Name)</span></h3>
 
-  <p>@Html.ActionLink("Edit Item", "Edit", new { id = Model.ItemId }, new { @class = "btn btn-primary" })</p>
-  <p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId }, new { @class = "btn btn-danger" })</p>
-  <p>@Html.ActionLink("Back to list", "Index", null, new { @class = "btn btn-secondary" })</p>
+  <p><a href="@Url.Action("Edit", new { id = Model.ItemId })" class="btn btn-primary">Edit Item</a></p>
+  <p><a href="@Url.Action("Delete", new { id = Model.ItemId })" class="btn btn-danger">Delete Item</a></p>
+  <p><a href="@Url.Action("Index")" class="btn btn-secondary">Back to list</a></p>
 </div>
