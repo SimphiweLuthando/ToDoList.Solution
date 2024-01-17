@@ -7,10 +7,21 @@
 <div class="container mt-5 col-sm-4">
   <h4 class="mb-3">Add a new item</h4>
 
-  <div class="alert alert-warning">
-    <strong>NOTE:</strong> You need to have at least one category before you can add an item!
+@if (ViewData.ModelState.ContainsKey("CategoryId") && ViewData.ModelState["CategoryId"].Errors.Any())
+{
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "font-weight-bold" })
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
-  <p>Go to @Html.ActionLink("this page", "Create", "Categories") to create a category.</p>
+}
+
+@if (ViewData.ModelState.ContainsKey("Description") && ViewData.ModelState["Description"].Errors.Any())
+{
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "font-weight-bold" })
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+}
 
   @using (Html.BeginForm())
   {
