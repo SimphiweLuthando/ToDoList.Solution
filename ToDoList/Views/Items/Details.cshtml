@@ -5,32 +5,62 @@
 @using ToDoList.Models
 @model ToDoList.Models.Item
 
-<h2>Item Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>  
-<h3>@Html.DisplayNameFor(model => model.Category): @Html.DisplayFor(model => model.Category.Name)</h3>
 
-@if(@Model.JoinEntities.Count == 0)
+  <div class="jumbotron text-center">
+    <h1>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h1>
+    <h2></h2>
+  </div>
+</div>
+<h2></h2>
+<hr />
+<div class="container col-sm-5">
+  <div class="card mb-5">
+    <div class="card-body">
+      <h5 class="card-title">Item Details</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">@Html.DisplayNameFor(model => model.Category): @Html.DisplayFor(model => model.Category.Name)</h6>
+
+
+
+@if (@Model.JoinEntities.Count == 0)
 {
-  <p>This item does not have any tags yet!</p>
+  <p class="card-text">This item does not have any tags yet!</p>
 }
 else
 {
-  <h4>This item has the following tags:</h4>
+  <p class="card-text">This item has the following tags:</p>
   <ul>
-    @foreach(ItemTag join in Model.JoinEntities)
+  @foreach (ItemTag join in Model.JoinEntities)
     {
-      <li>Tag: @join.Tag.Title</li>
+      <div class="container d-flex align-items-center">
+      <li class="me-3">Tag: @join.Tag.Title</li>
+
       @using (Html.BeginForm("DeleteJoin", "Items"))
       {
+       
         @Html.Hidden("joinId", @join.ItemTagId)
-        <input type="submit" value="Delete"/>
+        <button type="submit" class="btn btn-danger">
+          <i class="bi bi-trash"></i> Delete
+        </button>
       }
+      </div>
     }
   </ul>
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Item or Category", "Edit", new { id = Model.ItemId })</p>
-<p>@Html.ActionLink("Add a Tag", "AddTag", new { id = Model.ItemId })</p>
-<p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.ItemId })</p>
+  </div>
+</div>
+
+<div class="btn-group-vertical" role="group" aria-label="Item Actions">
+  <a href="@Url.Action("Index")" class="btn btn-primary mb-2">
+    <i class="bi bi-arrow-left"></i> Back to list
+  </a>
+  <a href="@Url.Action("Edit", new { id = Model.ItemId })" class="btn btn-primary mb-2">
+    <i class="bi bi-pencil"></i> Edit Item or Category
+  </a>
+  <a href="@Url.Action("AddTag", new { id = Model.ItemId })" class="btn btn-primary mb-2">
+    <i class="bi bi-plus"></i> Add a Tag
+  </a>
+  <a href="@Url.Action("Delete", new { id = Model.ItemId })" class="btn btn-danger mb-2">
+    <i class="bi bi-trash"></i> Delete Item
+  </a>
+</div>

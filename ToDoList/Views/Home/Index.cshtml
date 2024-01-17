@@ -2,11 +2,15 @@
   Layout = "_Layout";
 }
 
-<div class="container-index">
-  <h1 class="text-center">Welcome to the To Do List!</h1>
-  <div class="btn-group" role="group" aria-label="Button group">
-    <p class="text-center">@Html.ActionLink("See all items", "Index", "Items", null, new { @class = "btn btn-pill btn-primary me-4" })</p> 
-    <p>@Html.ActionLink("See all categories", "Index", "Categories", null, new { @class = "btn btn-pill btn-primary" })</p>
-    <p>@Html.ActionLink("See all tags", "Index", "Tags")</p>
+<div class="container px-3">
+  <div class="card col-sm-6 mx-auto">
+    <div class="card-body">
+      <h5 class="card-title">Welcome to the To Do List!</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">ASP.NET MVC</h6>
+      <p class="card-text">This is a full stack application to help you manage your tasks and live a more productive life.</p>
+      @Html.ActionLink("See all items", "Index", "Items", null, new { @class = "card-link" })
+      @Html.ActionLink("See all categories", "Index", "Categories", null, new { @class = "card-link" })
+      @Html.ActionLink("See all tags", "Index", "Tags", null, new { @class = "card-link" })
+    </div>
   </div>
 </div>
