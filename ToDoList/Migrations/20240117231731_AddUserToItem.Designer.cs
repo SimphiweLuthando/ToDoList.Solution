@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToDoList.Models;
 
@@ -10,9 +11,10 @@ using ToDoList.Models;
 namespace ToDoList.Migrations
 {
     [DbContext(typeof(ToDoListContext))]
-    partial class ToDoListContextModelSnapshot : ModelSnapshot
+    [Migration("20240117231731_AddUserToItem")]
+    partial class AddUserToItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -345,7 +347,7 @@ namespace ToDoList.Migrations
                         .IsRequired();
 
                     b.HasOne("ToDoList.Models.ApplicationUser", "User")
-                        .WithMany("Items")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Category");
@@ -370,11 +372,6 @@ namespace ToDoList.Migrations
                     b.Navigation("Item");
 
                     b.Navigation("Tag");
-                });
-
-            modelBuilder.Entity("ToDoList.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("ToDoList.Models.Category", b =>

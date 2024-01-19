@@ -12,5 +12,7 @@ namespace ToDoList.Models
     public int CategoryId { get; set; }
     public Category Category { get; set; }
     public List<ItemTag> JoinEntities { get;}
+    public string UserId { get; set; }
+    public ApplicationUser User { get; set; }
   }
 }
