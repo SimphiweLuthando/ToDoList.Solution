@@ -20,3 +20,19 @@ div#footer {
     align-items: center;
     height: 80vh;
   }
+
+  .list-item-border {
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  footer {
+    margin-top: auto;
+  }
