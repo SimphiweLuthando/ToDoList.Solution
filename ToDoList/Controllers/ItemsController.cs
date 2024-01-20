@@ -77,15 +77,16 @@ namespace ToDoList.Controllers
             return View(thisItem);
         }
 
-        public async Task<ActionResult> Edit(int id)
+        public ActionResult Edit(int id)
         {
-            Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
+            Item thisItem = _db.Items
+            .Include(item => item.User)
+            .FirstOrDefault(item => item.ItemId == id);
             ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
 
-            string userId = _userManager.GetUserId(User);
-            ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (thisItem.User == null || thisItem.User.Id != currentUser.Id)
+            if (thisItem.User == null || thisItem.User.Id != userId)
             {
                 return Unauthorized(); // or return NotFound() I'll see what works best
             }
